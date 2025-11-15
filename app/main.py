@@ -4,13 +4,16 @@ from dotenv import load_dotenv
 
 from fastapi import FastAPI
 
-
 from config.mysql_config import Base, engine
+
+from anonymous_board.controller.anonymous_board_controller import anonymous_board_controller
 
 
 load_dotenv()
 
 app = FastAPI()
+
+app.include_router(anonymous_board_controller)
 
 if __name__ == "__main__":
     import uvicorn
